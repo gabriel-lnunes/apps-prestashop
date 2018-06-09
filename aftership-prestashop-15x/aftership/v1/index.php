@@ -209,7 +209,7 @@ function orders() {
 			'name' => $d['firstname'].' '.$d['lastname'],
 			'emails' => array($d['email']),
 			'order_id' => $d['id_order'],
-			'title' => $d['reference'],
+			'note' => $d['reference'],
 			'smses' => $d['phone_mobile']?array($d['phone_mobile']):array($d['phone']),
             'products' => array()
 		);
