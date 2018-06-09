@@ -157,7 +157,7 @@ function orders() {
 
 	$offset = ($page - 1) * $limit;
 
-	$q = "SELECT o.`reference`, o.`shipping_number`, oc.`tracking_number`, c.`firstname`, c.`lastname`, c.`email`, a.`address1`, a.`address2`, a.`postcode`, a.`city`, a.`phone`, a.`phone_mobile`, cl.`name` as country_name, s.`name` as state_name
+	$q = "SELECT o.`id_order`, o.`reference`, o.`shipping_number`, oc.`tracking_number`, c.`firstname`, c.`lastname`, c.`email`, a.`address1`, a.`address2`, a.`postcode`, a.`city`, a.`phone`, a.`phone_mobile`, cl.`name` as country_name, s.`name` as state_name
 		  FROM `"._DB_PREFIX_."orders` o, `"._DB_PREFIX_."order_carrier` oc, `"._DB_PREFIX_."customer` c, `"._DB_PREFIX_."country` co, `"._DB_PREFIX_."country_lang` cl, `"._DB_PREFIX_."address` a
 		  LEFT JOIN `"._DB_PREFIX_."state` s
 		  ON s.`id_state` = a.`id_state`
@@ -208,7 +208,8 @@ function orders() {
 			'tracking_number' => strtoupper($tracking_number),
 			'name' => $d['firstname'].' '.$d['lastname'],
 			'emails' => array($d['email']),
-			'order_id' => $d['reference'],
+			'order_id' => $d['id_order'],
+			'title' => $d['reference'],
 			'smses' => $d['phone_mobile']?array($d['phone_mobile']):array($d['phone']),
             'products' => array()
 		);
