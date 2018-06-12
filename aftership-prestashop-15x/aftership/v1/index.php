@@ -210,6 +210,7 @@ function orders() {
 			'emails' => array($d['email']),
 			'order_id' => $d['id_order'],
 			'note' => $d['reference'],
+            'title' => $d['reference'],
 			'smses' => $d['phone_mobile']?array($d['phone_mobile']):array($d['phone']),
             'products' => array()
 		);
